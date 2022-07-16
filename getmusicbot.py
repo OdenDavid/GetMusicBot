@@ -1,4 +1,5 @@
 import tweepy
+import time
 
 with open("Keys.txt") as f:
     all_keys = f.readlines()
@@ -21,3 +22,12 @@ except Exception as e:
     print(e)
 
 
+#bot_id = int(api.me().id_str)
+
+while True:
+    mentions = api.mentions_timeline()
+    for mention in mentions:
+        print("Bro what's good!")
+        print(f"{mention.author.screen_name} - {mention.text}")
+
+    time.sleep(15)
