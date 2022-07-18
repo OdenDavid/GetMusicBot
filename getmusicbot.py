@@ -21,13 +21,31 @@ try:
 except Exception as e:
     print(e)
 
+# the screen name of this bot
+names = ["GetMusicBot"]
+  
+# fetching the user
+user = api.get_user(screen_name=names[0])
 
-#bot_id = int(api.me().id_str)
+bot_id = user.id_str
+
+mention_id = 1
+
+message = "This is a reply to you @{}"
 
 while True:
-    mentions = api.mentions_timeline()
+    mentions = api.mentions_timeline(since_id=mention_id)
     for mention in mentions:
-        print("Bro what's good!")
-        print(f"{mention.author.screen_name} - {mention.text}")
-
+        #print("Bro what's good!")
+        #print(f"{mention.author.screen_name} - {mention.text}")
+        mention_id = mention.id
+        if mention.in_reply_to_status_id is not None and mention.author.id != bot_id:
+            try:
+                print("Attempting to reply")
+                api.update_status(message.format(mention.author.screen_name), in_reply_to_status_id=mention.id_str)
+                print("Replied fine")
+            except Exception as e:
+                print(e)
+        else:
+            pass
     time.sleep(15)
