@@ -38,5 +38,10 @@ Save unto a text file and upload to AWS EFS
 
 <b>Note: </b> A user who tags this bot can also specify what streaming platform he wants the bot to reply with, e.g Spotify, Apple music. with or without quotes. If none is provided youtube will be returned.
 
+# Results
+![My Image1](result1.jpg)
+![My Image2](result2.jpg)
+![My Image3](result3.jpg)
+
 
 
